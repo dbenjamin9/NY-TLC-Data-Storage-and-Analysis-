@@ -51,3 +51,24 @@ plt.show()
 ![](https://github.com/dbenjamin9/NY-TLC-Data-Storage-and-Analysis-/blob/main/ipy%20image1.png)
 
 
+```
+import pymysql
+import pandas as pd
+import seaborn as sb
+import matplotlib.pyplot as plt
+
+# Connect to the database
+connection = pymysql.connect(host='localhost', user='root', password='root', database='nyc_taxi_data')
+
+try:
+    with connection.cursor() as cursor:
+        # Execute a query
+        cursor.execute("SELECT HOUR(tpep_pickup_datetime), COUNT(*) from nyctaxidata GROUP BY HOUR(tpep_pickup_datetime) ORDER BY COUNT(*) DESC")
+        
+        
+        result = cursor.fetchall()
+        for row in result:
+            print(row)
+finally:
+    connection.close()
+```
