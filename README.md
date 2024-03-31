@@ -73,3 +73,43 @@ finally:
     connection.close()
 ```
 ### 17H and 18H are the busiest hours of the days
+
+```
+import pandas as pd
+import matplotlib.pyplot as plt
+import pymysql
+
+
+connection = pymysql.connect(host='localhost', user='root', password='root', database='nyc_taxi_data')
+
+
+
+
+try:
+    with connection.cursor() as cursor:
+       
+        cursor.execute("SELECT total_amount from nyctaxidata WHERE fare_amount > 0")
+        
+        
+        result = cursor.fetchall()
+        
+        
+        
+        df = pd.DataFrame(result, columns=['total_amount'])
+        
+        frequency = df['total_amount'].value_counts()
+
+        plt.figure(figsize=(10, 6))
+        plt.bar(frequency.index, frequency.values, color='blue', edgecolor='purple')
+        plt.title('Distribution of Total Fare Amounts')
+        plt.xlabel('Total Amount')
+        plt.ylabel('Frequency')
+        plt.grid(axis='y', alpha=0.7)
+        plt.show()
+
+
+
+finally:
+    connection.close()
+```
+![]
