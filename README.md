@@ -112,4 +112,32 @@ try:
 finally:
     connection.close()
 ```
-![]
+![](https://github.com/dbenjamin9/NY-TLC-Data-Storage-and-Analysis-/blob/main/img2%20ipy.png)
+
+
+```
+import numpy as np 
+import pandas as pd
+import seaborn as sb 
+import matplotlib.pyplot as plt
+
+import pymysql
+
+connection = pymysql.connect(host= 'localhost', user='root', password='root', database='nyc_taxi_data')
+
+try:
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT tpep_dropoff_datetime, tpep_pickup_datetime FROM nyctaxidata")
+        
+        result = cursor. fetchall()
+        df = pd.DataFrame(result, columns=['tpep_dropoff_datetime', 'tpep_pickup_datetime'])
+        df['total_duration'] = (df['tpep_dropoff_datetime'] - df['tpep_pickup_datetime']).dt.total_seconds () / 60
+        average_duration = df['total_duration'].mean()
+        print(f"Average trip duration: {average_duration}")
+
+finally:
+    connection.close()
+
+```
+
+Average trip duration: 15.66
