@@ -1,4 +1,7 @@
 # NY-TLC-Data-Storage-and-Analysis-
+[Click here to download the dataset](https://drive.google.com/drive/u/0/folders/19D0EgpxLh2d6WTbw8Pjp8kW2puOCw5yk)
+
+### **Problem 1: What is the average trip distance?**
 ```
 import pymysql
 
@@ -18,6 +21,8 @@ finally:
     connection.close()
 ```
 Answer: 3.847343
+
+### **Problem 2: What is the relationship between trip distance and fare amount?**
 
 ```
 ## Your Code here
@@ -50,7 +55,7 @@ plt.show()
 
 ![](https://github.com/dbenjamin9/NY-TLC-Data-Storage-and-Analysis-/blob/main/ipy%20image1.png)
 
-
+### **Problem 3: What are the busiest hours for taxi trips?**
 ```
 import pymysql
 import pandas as pd
@@ -74,6 +79,7 @@ finally:
 ```
 ### 17H and 18H are the busiest hours of the days
 
+### **Problem 4: What is the distribution of total fare amounts?**
 ```
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -114,7 +120,7 @@ finally:
 ```
 ![](https://github.com/dbenjamin9/NY-TLC-Data-Storage-and-Analysis-/blob/main/img2%20ipy.png)
 
-
+### **Problem 5: What is the average trip duration?**
 ```
 import numpy as np 
 import pandas as pd
