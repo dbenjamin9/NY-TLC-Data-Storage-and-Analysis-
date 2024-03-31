@@ -72,3 +72,4 @@ try:
 finally:
     connection.close()
 ```
+### 17H and 18H are the busiest hours of the days
